@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using SportsStore.Models;
 
 namespace SportsStore
 {
@@ -8,6 +9,7 @@ namespace SportsStore
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IProductRepository, InMemoryProductRepository>();
             services.AddMvc();
         }
 
@@ -21,7 +23,12 @@ namespace SportsStore
 
             app.UseStatusCodePages();
             app.UseStaticFiles();
-            app.UseMvc(routes => { });
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Product}/{action=List}/{id?}");
+            });
         }
     }
 }
