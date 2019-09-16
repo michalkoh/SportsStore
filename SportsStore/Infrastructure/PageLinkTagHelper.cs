@@ -31,8 +31,8 @@ namespace SportsStore.Infrastructure
             for (var i = 1; i <= PageModel.TotalPages; i++)
             {
                 var tag = new TagBuilder("a");
-                tag.Attributes["href"] = urlHelper.Action(new UrlActionContext() { Action = PageAction, Values = new { page = i }});
-                tag.InnerHtml.AppendHtml(i.ToString());
+                tag.Attributes["href"] = urlHelper.Action(new UrlActionContext() { Action = PageAction, Values = new { page = i } });
+                tag.InnerHtml.AppendHtml(i.ToString() + "_");
                 result.InnerHtml.AppendHtml(tag);
             }
 
