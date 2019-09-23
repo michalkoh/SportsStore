@@ -3,11 +3,15 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" asp-href-include="/lib/bootstrap/dist/**/*.min.css" asp-href-exclude="**/*-reboot*,**/*-grid*" />
     <title>SportsStore</title>
 </head>
 <body>
+    <div class="navbar navbar-dark bg-dark" role="navigation">
+        <a class="navbar-brand" href="#">SPORTS STORE</a>
+    </div> 
     <div>
-        @RenderBody()
-    </div>
+    @RenderBody()
+</div>
 </body>
 </html>

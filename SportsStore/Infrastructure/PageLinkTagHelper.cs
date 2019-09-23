@@ -32,7 +32,7 @@ namespace SportsStore.Infrastructure
             {
                 var tag = new TagBuilder("a");
                 tag.Attributes["href"] = urlHelper.Action(new UrlActionContext() { Action = PageAction, Values = new { page = i } });
-                tag.InnerHtml.AppendHtml(i.ToString() + "_");
+                tag.InnerHtml.AppendHtml(i.ToString() + " ");
                 result.InnerHtml.AppendHtml(tag);
             }
 
