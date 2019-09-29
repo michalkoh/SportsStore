@@ -1,6 +1,11 @@
 ﻿@model ProductsListViewModel
 
-<table class="table">
+@foreach (var product in Model.Products)
+{
+    @await Html.PartialAsync("ProductSummary", product)
+}
+
+@*<table class="table">
     <thead>
     <tr>
         <th>
@@ -42,6 +47,7 @@
         </tr>
     }
     </tbody>
-</table>
+</table>*@
 
-<div page-model="@Model.PagingInfo" page-action="List"></div>
+<div page-model="@Model.PagingInfo" page-action="List" class="btn-group m-1" 
+     page-class-enabled="true" page-class="btn" page-class-normal="btn-secondary" page-class-selected="btn-primary"></div>
