@@ -37,9 +37,20 @@ namespace SportsStore
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "pagination",
-                    template: "Products/Page{page}",
+                    name: "",
+                    template: "{category}/Page/{page}",
                     defaults: new { Controller = "Product", Action = "List" });
+
+                routes.MapRoute(
+                    name: "pagination",
+                    template: "Page{page}",
+                    defaults: new { Controller = "Product", Action = "List" });
+
+                routes.MapRoute(
+                    name: "",
+                    template: "{category}",
+                    defaults: new { Controller = "Product", Action = "List" });
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Product}/{action=List}/{id?}");
