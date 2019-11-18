@@ -20,7 +20,7 @@ namespace SportsStore
         {
             // services.AddDbContext<ApplicationDbContext>(options => options. Options.U(Configuration["Data:SportStoreProducts:ConnectionString"]));
             
-            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IProductRepository, InMemoryProductRepository>();
             services.AddTransient<ApplicationDbContext>();
             services
                 .AddControllersWithViews();
@@ -64,7 +64,7 @@ namespace SportsStore
                     pattern: "{controller=Product}/{action=List}/{id?}");
             });
             
-            SeedData.EnsurePopulated(app);
+            //SeedData.EnsurePopulated(app);
         }
     }
 }
