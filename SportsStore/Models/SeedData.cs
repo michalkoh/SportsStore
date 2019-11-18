@@ -11,8 +11,6 @@ namespace SportsStore.Models
         {
             using (var context = app.ApplicationServices.GetRequiredService<ApplicationDbContext>())
             {
-                context.Database.Migrate();
-
                 if (!context.Products.Any())
                 {
                     context.Products.AddRange(
