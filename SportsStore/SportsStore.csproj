@@ -18,9 +18,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
-    <Content Include="App_Data\**">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
 </Project>
