@@ -20,7 +20,7 @@ namespace SportsStore
         {
             // services.AddDbContext<ApplicationDbContext>(options => options. Options.U(Configuration["Data:SportStoreProducts:ConnectionString"]));
             
-            services.AddTransient<IProductRepository, InMemoryProductRepository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<ApplicationDbContext>();
             services
                 .AddControllersWithViews();
