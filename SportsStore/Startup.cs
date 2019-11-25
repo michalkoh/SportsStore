@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -19,11 +20,19 @@ namespace SportsStore
         public void ConfigureServices(IServiceCollection services)
         {
             // services.AddDbContext<ApplicationDbContext>(options => options. Options.U(Configuration["Data:SportStoreProducts:ConnectionString"]));
-            
+        }
+
+        public void ConfigureDevelopmentServices(IServiceCollection services)
+        {
+            ConfigureCommonServices(services);
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(@"Data Source=App_Data\sportsStore.db"));
+        }
+
+        private static void ConfigureCommonServices(IServiceCollection services)
+        {
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<ApplicationDbContext>();
-            services
-                .AddControllersWithViews();
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

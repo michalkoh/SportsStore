@@ -4,11 +4,10 @@ namespace SportsStore.Models
 {
     public class ApplicationDbContext : DbContext
     {
-        public DbSet<Product> Products { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-            options.UseSqlite(@"Data Source=App_Data\sportsStore.db");
         }
+
+        public DbSet<Product> Products { get; set; }
     }
 }
