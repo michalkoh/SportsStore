@@ -28,6 +28,12 @@ namespace SportsStore
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(@"Data Source=App_Data\sportsStore.db"));
         }
 
+        public void ConfigureStagingServices(IServiceCollection services)
+        {
+            ConfigureCommonServices(services);
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(@"Data Source=App_Data\sportsStore.db"));
+        }
+
         private static void ConfigureCommonServices(IServiceCollection services)
         {
             services.AddTransient<IProductRepository, ProductRepository>();
