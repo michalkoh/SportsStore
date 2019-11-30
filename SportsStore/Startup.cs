@@ -19,6 +19,8 @@ namespace SportsStore
 
         public void ConfigureServices(IServiceCollection services)
         {
+            ConfigureCommonServices(services);
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(@"Data Source=App_Data\sportsStore.db"));
             // services.AddDbContext<ApplicationDbContext>(options => options. Options.U(Configuration["Data:SportStoreProducts:ConnectionString"]));
         }
 
