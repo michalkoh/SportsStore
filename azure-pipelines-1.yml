@@ -39,6 +39,7 @@ steps:
     publishWebProjects: true
     arguments: '-c $(buildConfiguration) --no-build --no-restore /p:PublishProfile=FolderProfile'
     zipAfterPublish: false
+    modifyOutputPath: false
 
 - task: PublishPipelineArtifact@1
   inputs:
