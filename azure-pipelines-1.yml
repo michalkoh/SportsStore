@@ -39,3 +39,8 @@ steps:
     publishWebProjects: true
     arguments: '-c $(buildConfiguration) --no-build --no-restore /p:PublishProfile=FolderProfile'
     zipAfterPublish: false
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    publishLocation: 'pipeline'
