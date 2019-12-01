@@ -24,14 +24,18 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
+    arguments: '-c $(buildConfiguration) --no-restore'
 
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
+    projects: '**/*Tests.csproj'
+    arguments: '-c $(buildConfiguration) --no-build --no-restore'
     publishTestResults: false
 
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
     publishWebProjects: true
+    arguments: '-c $(buildConfiguration) --no-build --no-restore /p:PublishProfile=FolderProfile'
     zipAfterPublish: false
