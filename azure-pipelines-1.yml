@@ -37,11 +37,12 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: true
-    arguments: '-c $(buildConfiguration) --no-build --no-restore /p:PublishProfile=FolderProfile'
+    arguments: '**\SportStore.cs -c $(buildConfiguration) --no-build --no-restore /p:PublishProfile=FolderProfile -o $(build.artifactStagingDirectory)'
     zipAfterPublish: false
     modifyOutputPath: false
 
-- task: PublishPipelineArtifact@1
+- task: PublishBuildArtifacts@1
   inputs:
-    targetPath: '$(Pipeline.Workspace)'
-    publishLocation: 'pipeline'
+   PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+   ArtifactName: 'drop'
+   publishLocation: 'Container'
