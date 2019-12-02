@@ -37,7 +37,7 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: true
-    arguments: '**\SportStore.cs -c $(buildConfiguration) --no-build --no-restore /p:PublishProfile=FolderProfile -o $(build.artifactStagingDirectory)'
+    arguments: '-c $(buildConfiguration) --no-build --no-restore /p:PublishProfile=FolderProfile -o $(build.artifactStagingDirectory)'
     zipAfterPublish: false
     modifyOutputPath: false
 
