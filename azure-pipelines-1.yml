@@ -37,9 +37,8 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: true
-    arguments: '-c $(buildConfiguration) --no-build --no-restore /p:PublishProfile=FolderProfile -o $(build.artifactStagingDirectory)'
+    arguments: '--configuration $(buildConfiguration) --output $(build.artifactStagingDirectory)'
     zipAfterPublish: true
-    modifyOutputPath: false
 
 # - task: ArchiveFiles@2
 #   inputs:
@@ -53,4 +52,3 @@ steps:
   inputs:
    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
    ArtifactName: 'drop'
-   publishLocation: 'Container'
