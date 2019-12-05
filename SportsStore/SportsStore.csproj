@@ -28,4 +28,11 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\**" />
+    <Content Remove="Migrations\**" />
+    <EmbeddedResource Remove="Migrations\**" />
+    <None Remove="Migrations\**" />
+  </ItemGroup>
+
 </Project>

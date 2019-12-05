@@ -38,7 +38,7 @@ namespace SportsStore
 
         private static void ConfigureCommonServices(IServiceCollection services)
         {
-            services.AddTransient<IProductRepository, InMemoryProductRepository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<ApplicationDbContext>();
             services.AddControllersWithViews();
         }
