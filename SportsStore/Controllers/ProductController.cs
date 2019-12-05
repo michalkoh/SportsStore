@@ -20,7 +20,7 @@ namespace SportsStore.Controllers
             return View(
                 new ProductsListViewModel()
                 {
-                    Products = this.productRepository.Products
+                    Products = this.productRepository.GetProducts()
                         .Where(p => category == null || p.Category == category)
                         .OrderBy(p => p.Id)
                         .Skip((page - 1) * PageSize)
@@ -29,7 +29,7 @@ namespace SportsStore.Controllers
                     {
                         CurrentPage = page,
                         ItemsPerPage = PageSize,
-                        TotalItems =  category == null ? this.productRepository.Products.Count() : this.productRepository.Products.Count(p => p.Category == category)
+                        TotalItems =  category == null ? this.productRepository.GetProducts().Count() : this.productRepository.GetProducts().Count(p => p.Category == category)
                     },
                     ProductCategory = category
                 });

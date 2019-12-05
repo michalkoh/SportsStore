@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -20,7 +21,7 @@ namespace SportsStore
         public void ConfigureServices(IServiceCollection services)
         {
             ConfigureCommonServices(services);
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(@"Data Source=App_Data\sportsStore.db"));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(@"Data Source=App_Data\sportsStore.db"), ServiceLifetime.Transient);
             // services.AddDbContext<ApplicationDbContext>(options => options. Options.U(Configuration["Data:SportStoreProducts:ConnectionString"]));
         }
 
@@ -39,7 +40,7 @@ namespace SportsStore
         private static void ConfigureCommonServices(IServiceCollection services)
         {
             services.AddTransient<IProductRepository, ProductRepository>();
-            services.AddTransient<ApplicationDbContext>();
+            services.AddTransient<Func<ApplicationDbContext>>(cont => cont.GetService<ApplicationDbContext>);
             services.AddControllersWithViews();
         }
 
