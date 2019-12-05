@@ -24,21 +24,21 @@ namespace SportsStore
             // services.AddDbContext<ApplicationDbContext>(options => options. Options.U(Configuration["Data:SportStoreProducts:ConnectionString"]));
         }
 
-        public void ConfigureDevelopmentServices(IServiceCollection services)
-        {
-            ConfigureCommonServices(services);
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(@"Data Source=App_Data\sportsStore.db"));
-        }
+        //public void ConfigureDevelopmentServices(IServiceCollection services)
+        //{
+        //    ConfigureCommonServices(services);
+        //    services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(@"Data Source=App_Data\sportsStore.db"));
+        //}
 
-        public void ConfigureStagingServices(IServiceCollection services)
-        {
-            ConfigureCommonServices(services);
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(@"Data Source=App_Data\sportsStore.db"));
-        }
+        //public void ConfigureStagingServices(IServiceCollection services)
+        //{
+        //    ConfigureCommonServices(services);
+        //    services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(@"Data Source=App_Data\sportsStore.db"));
+        //}
 
         private static void ConfigureCommonServices(IServiceCollection services)
         {
-            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IProductRepository, InMemoryProductRepository>();
             services.AddTransient<ApplicationDbContext>();
             services.AddControllersWithViews();
         }
